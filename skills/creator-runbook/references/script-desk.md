@@ -29,7 +29,7 @@ For planning only, use the creator’s measured words per minute. At 135 words/m
 
 ## Return in this order
 
-1. **Clean script** — performer-ready lines grouped by character or scene. Put direction on a separate line outside the spoken block. Write numerals and acronym pronunciations the way the voice should say them.
+1. **Clean script** — performer-ready lines grouped by character or scene. The spoken words and the direction are two fields, and the direction has to reach the engine as [voice](voice.md) describes. Write numerals and acronym pronunciations the way the voice should say them.
 2. **A/V edit** — one row per meaningful change. Columns: estimated or measured interval, exact spoken cue or sync sound, source/asset ID, picture at entry → picture at exit, on-screen text, and sound/cut.
 3. **Pickup list** — missing quote, recording, footage, clearance or measurement; name the scene it affects and the fallback.
 4. **Readback** — ask “What can you establish, and what remains open?” Ask what caused an event only if the sources establish a cause. Underline the exact words and point to the frame that communicate uncertainty. For a prototype, “The inventor hopes this lip will catch the drips. Let's see where they would land” can accompany a labeled design drawing. An animated dry floor presented as an observed outcome overstates the evidence.

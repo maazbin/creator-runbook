@@ -6,7 +6,7 @@ Use this when a brief asks for a film, expressive animation, or an edit worth wa
 
 Write a tiny chain of events before writing a slogan. For “a paper plane misses the last train,” the plane approaches the gap, the doors close, the slipstream knocks it down, and it catches the roof of the last carriage. The ending changes the meaning of “misses.” The train must already be moving before the paper lifts. On the first board, place the door, plane and escape route where the viewer can relate all three.
 
-Stage the sequence with four drawings or thumbnail renders:
+Stage the sequence with four rendered frames:
 
 | Frame | What the viewer needs to register | Editorial choice |
 | --- | --- | --- |
@@ -19,23 +19,9 @@ A comedy can hold an extra beat before the reveal. An explainer can replace the 
 
 ## Animate the action before decorating the frame
 
-Draw a distinct silhouette, a readable field behind it, and a foreground object that can briefly hide it. Decide where the eye should start and end. Define action in local coordinates so that a fold, hand, or door turns on its real hinge. A cubic path is useful for flight. A mechanical door usually follows a constrained line. Set a different size and velocity for foreground, middle distance, and skyline during a tracking shot.
+Stage a distinct silhouette, a readable field behind it, and a foreground object that can briefly hide it. Decide where the eye should start and end. Define action in local coordinates so that a fold, a hand, or a door turns on its real hinge. A cubic path is useful for flight. A mechanical door usually follows a constrained line. Set a different size and velocity for foreground, middle distance, and skyline during a tracking shot.
 
-Use the portable [motion helpers](../scripts/motion.py) with Pillow, or implement the same decisions in the host renderer. This is a complete frame recipe for a banked sheet of paper. Advance seconds at the export frame rate:
-
-```python
-from PIL import Image, ImageDraw
-from motion import ease, flight, pose, progress
-
-def frame(seconds):
-    picture = Image.new("RGB", (720, 1280), "#12263b")
-    draw = ImageDraw.Draw(picture)
-    t = ease(progress(seconds, 0.2, 1.6))
-    x, y, angle = flight([(80, 850), (280, 950), (400, 510), (610, 490)], t)
-    wing = [(-47, -18), (53, 0), (-33, 15), (-8, 3)]
-    draw.polygon(pose(wing, (x, y), 1.3, angle), fill="#ffe7ab")
-    return picture
-```
+Block those four frames in the shot file and render them. The picture that ships is a lit render, made as in [the render path](render.md), then typed and graded as in [craft](craft.md).
 
 Add secondary movement only where it reveals force or character. A passing carriage can tug paper before it lifts; a window reflection can glide over a face before a turn. Decide the audio cue at the same time. Advance a motor, wind or footstep sound across a cut when it connects the spaces. Use a single new accent on the reveal. A still camera often makes a fast subject easier to follow.
 

@@ -293,7 +293,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--narrated",
         action="store_true",
-        help="Also render the experiment with an installed narrator",
+        help="Also render the experiment through CREATOR_TTS_COMMAND",
     )
     args = parser.parse_args()
     for channel in ("motion-notes", "last-light"):

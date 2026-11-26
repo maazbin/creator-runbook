@@ -6,7 +6,9 @@ Each scene has a unique id, seconds, basis, evidence (list), voice (exact spoken
 
 Use basis documented or observation with a real ID from the profile's sources for factual material. A proposal also needs screen_label and, for a voiced proposal, a spoken_qualification contained in voice. Use fiction for invented narrative and transition for purely connective material. Invented labels, footage and words cannot stand in for evidence. If an essential source is missing, research it or change the claim. For a technical validation failure, repair the named scene while preserving the underlying brief.
 
-A complete tiny fixture is below. It illustrates the data shape. For a motion or performance brief, replace the card with actual picture assets.
+`statement`, `compare`, and `steps` are intertitles. A shot whose job is the subject uses `media` and a finished picture. A generated scene that could be mistaken for a record carries `screen_label`.
+
+A complete tiny fixture is below. It illustrates the data shape. It is not the visual standard.
 
 Channel sent to configure:
 
@@ -31,4 +33,4 @@ Episode sent to finish:
 }
 ```
 
-For a ready-to-render richer example, see the two drafts and original animation source in the repository's examples directory. The coding agent chooses the form, writes the actual words, and produces or selects assets before calling the renderer.
+The drafts in the examples directory show a larger JSON shape. They are not the picture. Produce the shot as in [the render path](render.md), then set layout to `media` and `file` to the rendered path, as this contract already requires. There is no `media` key. The coding agent chooses the form, writes the actual words, and produces or selects assets before calling the assembler.
