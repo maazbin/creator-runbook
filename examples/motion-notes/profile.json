@@ -1,0 +1,15 @@
+{
+  "id": "motion-notes",
+  "name": "Motion Notes",
+  "platform": "youtube",
+  "niche": "Motion design",
+  "audience": "Designers learning timing",
+  "voice": "A small experiment, with room to predict.",
+  "format": "landscape",
+  "language": "en",
+  "seconds": 12,
+  "delivery": "captioned",
+  "sources": {
+    "diagram": "Original measured animation in examples/make_examples.py, motion_frame: both positions go from 0 to 1 over t=4..6 seconds; the lower dot follows p*p*(3-2*p)."
+  }
+}

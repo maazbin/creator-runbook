@@ -1,0 +1,67 @@
+{
+  "channel": "motion-notes",
+  "platform": "youtube",
+  "language": "en",
+  "angle": "Two timing curves racing to one finish line",
+  "title": "Which dot gets there first?",
+  "post": "Which dot gets there first? Both travel the same distance in exactly two seconds. Watch the midpoint, then replay the finish. The lower dot uses smoothstep, p²(3 − 2p).",
+  "scenes": [
+    {
+      "id": "opening",
+      "seconds": 4,
+      "basis": "observation",
+      "evidence": [
+        "diagram"
+      ],
+      "voice": "",
+      "picture": "Two dots share a starting line.",
+      "change": "The two tracks appear together.",
+      "sound": "Original plucked clock motif",
+      "heading": "Which arrives first?",
+      "line": "[Two clicks] Two dots share a starting line.",
+      "layout": "media",
+      "file": "original.mp4",
+      "in": 0,
+      "audio": "@picture",
+      "caption": "[Two clicks] Two dots share a starting line."
+    },
+    {
+      "id": "turn",
+      "seconds": 4,
+      "basis": "observation",
+      "evidence": [
+        "diagram"
+      ],
+      "voice": "",
+      "picture": "The lower dot falls behind, catches up, then leads.",
+      "change": "Both dots move and the lower dot changes rank.",
+      "sound": "Original plucked clock motif",
+      "heading": "Which dot gets there first?",
+      "line": "The lower dot falls behind, catches up, then leads.",
+      "layout": "media",
+      "file": "original.mp4",
+      "in": 4,
+      "audio": "@picture",
+      "caption": "The lower dot falls behind, catches up, then leads."
+    },
+    {
+      "id": "payoff",
+      "seconds": 4,
+      "basis": "observation",
+      "evidence": [
+        "diagram"
+      ],
+      "voice": "",
+      "picture": "Both finish together in 2.00 seconds.",
+      "change": "Equal timestamps stay visible for comparison.",
+      "sound": "Original plucked clock motif",
+      "heading": "Which dot gets there first?",
+      "line": "[Chime] Both finish together in 2.00 seconds.",
+      "layout": "media",
+      "file": "original.mp4",
+      "in": 8,
+      "audio": "@picture",
+      "caption": "[Chime] Both finish together in 2.00 seconds."
+    }
+  ]
+}

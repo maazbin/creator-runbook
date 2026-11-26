@@ -1,0 +1,61 @@
+{
+  "channel": "last-light",
+  "platform": "instagram",
+  "language": "en",
+  "angle": "A lighthouse keeper waits for one returning boat",
+  "title": "The light that answered",
+  "post": "Every night she lit the lamp for boats she would never meet. Tonight, someone remembered the way back. An original miniature, best watched with sound.",
+  "scenes": [
+    {
+      "id": "opening",
+      "seconds": 4,
+      "basis": "fiction",
+      "evidence": [],
+      "voice": "",
+      "picture": "One light stayed on.",
+      "change": "The lighthouse pulses over empty water.",
+      "sound": "Original bell phrase over a quiet tide",
+      "heading": "One light stayed on.",
+      "line": "[Low tide, distant bell] One light stayed on.",
+      "layout": "media",
+      "file": "original.mp4",
+      "in": 0,
+      "audio": "@picture",
+      "caption": "[Low tide, distant bell] One light stayed on."
+    },
+    {
+      "id": "turn",
+      "seconds": 4,
+      "basis": "fiction",
+      "evidence": [],
+      "voice": "",
+      "picture": "A smaller light answers from the water.",
+      "change": "The returning boat blinks back.",
+      "sound": "Original bell phrase over a quiet tide",
+      "heading": "The light that answered",
+      "line": "[A higher note] A smaller light answers from the water.",
+      "layout": "media",
+      "file": "original.mp4",
+      "in": 4,
+      "audio": "@picture",
+      "caption": "[A higher note] A smaller light answers from the water."
+    },
+    {
+      "id": "payoff",
+      "seconds": 4,
+      "basis": "fiction",
+      "evidence": [],
+      "voice": "",
+      "picture": "Tonight, someone answered.",
+      "change": "The boat reaches the pier and both lights hold.",
+      "sound": "Original bell phrase over a quiet tide",
+      "heading": "The light that answered",
+      "line": "[Two notes resolve] Tonight, someone answered.",
+      "layout": "media",
+      "file": "original.mp4",
+      "in": 8,
+      "audio": "@picture",
+      "caption": "[Two notes resolve] Tonight, someone answered."
+    }
+  ]
+}

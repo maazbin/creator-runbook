@@ -1,0 +1,1 @@
+For a video or channel-content request in this repository, follow [Creator Runbook](skills/creator-runbook/SKILL.md). Work from the creator's message and accessible assets. Return playable deliverables in the chat.

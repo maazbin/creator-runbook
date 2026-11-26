@@ -1,0 +1,1 @@
+Which dot gets there first? Both travel the same distance in exactly two seconds. Watch the midpoint, then replay the finish. The lower dot uses smoothstep, p²(3 − 2p).
