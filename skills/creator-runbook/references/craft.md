@@ -6,7 +6,7 @@ The creator does not open an editor. If a shot has no asset, research it and pro
 
 ## Consistency
 
-Write one `consistency.md` before the second shot when any of these will recur, or when more than one cut will ship: a person, an object, a place, a palette, a type style, a grade, a motif. One document for the whole film. Platform cuts point at it. They do not restate it.
+Write one `consistency.md` before the second shot when any of these will recur, or when more than one cut will ship: a person, an object, a place, a palette, a type style, a grade, a motif, a voice. One document for the whole film. Platform cuts point at it. They do not restate it.
 
 Keep these headings:
 
@@ -17,6 +17,7 @@ Keep these headings:
 - Frame. The masters, the grid, the safe area for type on each master.
 - Light and grade. The direction of the key, what stays warm or cool, the one curve for the film.
 - Motif. The thing that returns, and the new job it has the second time.
+- Voice. One speaker and one engine for the film. The pace of each line is in [voice](voice.md).
 - Joins. Which transitions this film uses, and what each one means.
 - Canon. File paths for the references later shots must match.
 - Do not drift. The list of traits that stay put: screen direction, wardrobe, eyeline, the wording of a repeated fact.
