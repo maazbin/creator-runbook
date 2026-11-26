@@ -48,11 +48,24 @@ scene.cycles.samples = 32 if CONTACT else 128
 scene.cycles.use_denoising = True
 try:
     prefs = bpy.context.preferences.addons["cycles"].preferences
-    prefs.get_devices()
-    if any(device.type != "CPU" for device in prefs.devices):
+    # Factory startup leaves the compute type at NONE, so a listed GPU is unused
+    # until one backend is selected. Enable that backend only.
+    chosen = None
+    for backend in ("CUDA", "OPTIX", "HIP", "ONEAPI", "METAL"):
+        try:
+            prefs.compute_device_type = backend
+        except TypeError:
+            continue
+        prefs.get_devices()
+        if any(device.type == backend for device in prefs.devices):
+            chosen = backend
+            break
+    if chosen:
         for device in prefs.devices:
-            device.use = device.type != "CPU"
+            device.use = device.type == chosen
         scene.cycles.device = "GPU"
+    else:
+        scene.cycles.device = "CPU"
 except Exception:
     scene.cycles.device = "CPU"
 
@@ -123,4 +136,4 @@ aerender -project spot.aep -comp MASTER -output shot_[#####].png
 
 ## Encode, then hand it on
 
-Encode the PNG sequence to one shot file with the container in [platforms](platforms.md): MP4, H.264, yuv420p, faststart. Use the master frame rate. A shot with no sound yet can be silent; [production](production.md) mixes the master. The helper assembles that file. It does not draw this shot.
+Encode the PNG sequence to one shot file with the container in [platforms](platforms.md): MP4, H.264, yuv420p, faststart. Use the master frame rate. A shot with no sound yet can be silent. [Production](production.md) mixes the master and says what the helper may check. The helper does not draw this shot.

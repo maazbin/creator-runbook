@@ -2,7 +2,7 @@
 
 A spoken line is a performance. The feeling changes when the film turns. Write that change so the engine can play it, render the turn first, and listen before you render the rest.
 
-System.Speech, macOS `say`, and eSpeak do not perform. Do not use them. The helper's voiced mode does not invent a take. Supply the rendered file as the scene's audio, or set `CREATOR_TTS_COMMAND` to the engine below.
+System.Speech, macOS `say`, and eSpeak do not perform. Do not use them. The helper's voiced mode does not invent a take. Render the contact take below and supply that wav as the scene's audio. `edge-tts` writes MPEG and does not read a line on stdin, so do not point `CREATOR_TTS_COMMAND` at it. That variable is only for an argv that already writes 16-bit PCM WAV, as [production](production.md) describes. A line with its own rate and pitch is a file. The helper has no field for the pace row.
 
 ## Which engine
 

@@ -6,8 +6,11 @@ or set CREATOR_FFMPEG.
 """
 
 import math
+import os
+import shutil
 import struct
 import subprocess
+import sys
 import wave
 from pathlib import Path
 
@@ -24,40 +27,88 @@ QUIET = (196, 180, 154)
 SOURCE = (154, 145, 134)
 FLAME = (231, 161, 90)
 
-FFMPEG = Path(
-    __import__("os").environ.get(
-        "CREATOR_FFMPEG",
-        r"C:\Users\pc\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-9.1-full_build\bin\ffmpeg.exe",
-    )
-)
+FFMPEG = None
+FONTS = {}
+
+FAMILIES = {
+    "Constantia": [
+        r"C:\Windows\Fonts\constan.ttf",
+        "/Library/Fonts/Constantia.ttf",
+    ],
+    "Bahnschrift": [
+        r"C:\Windows\Fonts\bahnschrift.ttf",
+    ],
+    "SimSun": [
+        r"C:\Windows\Fonts\simsun.ttc",
+        r"C:\Windows\Fonts\simsun.ttf",
+    ],
+    "Microsoft YaHei": [
+        r"C:\Windows\Fonts\msyhl.ttc",
+        r"C:\Windows\Fonts\msyh.ttc",
+    ],
+}
+
+FONT_SPEC = {
+    "en-title": ("Constantia", 64, 0),
+    "en-title-s": ("Constantia", 52, 0),
+    "en-end": ("Constantia", 72, 0),
+    "en-end-s": ("Constantia", 46, 0),
+    "en-line": ("Constantia", 32, 0),
+    "en-line-s": ("Constantia", 28, 0),
+    "en-kick": ("Bahnschrift", 22, 0),
+    "en-kick-s": ("Bahnschrift", 20, 0),
+    "en-mark": ("Bahnschrift", 16, 0),
+    "en-src": ("Bahnschrift", 18, 0),
+    "zh-title": ("SimSun", 60, 0),
+    "zh-title-s": ("SimSun", 48, 0),
+    "zh-end": ("SimSun", 64, 0),
+    "zh-end-s": ("SimSun", 42, 0),
+    "zh-line": ("SimSun", 32, 0),
+    "zh-line-s": ("SimSun", 30, 0),
+    "zh-kick": ("Microsoft YaHei", 26, 0),
+    "zh-kick-s": ("Microsoft YaHei", 24, 0),
+    "zh-mark": ("Microsoft YaHei", 20, 0),
+    "zh-src": ("Microsoft YaHei", 20, 0),
+}
 
 
 def face(path, size, index=0):
     return ImageFont.truetype(str(path), size, index=index)
 
 
-FONTS = {
-    "en-title": face(r"C:\Windows\Fonts\constan.ttf", 64),
-    "en-title-s": face(r"C:\Windows\Fonts\constan.ttf", 52),
-    "en-end": face(r"C:\Windows\Fonts\constan.ttf", 72),
-    "en-end-s": face(r"C:\Windows\Fonts\constan.ttf", 46),
-    "en-line": face(r"C:\Windows\Fonts\constan.ttf", 32),
-    "en-line-s": face(r"C:\Windows\Fonts\constan.ttf", 28),
-    "en-kick": face(r"C:\Windows\Fonts\bahnschrift.ttf", 22),
-    "en-kick-s": face(r"C:\Windows\Fonts\bahnschrift.ttf", 20),
-    "en-mark": face(r"C:\Windows\Fonts\bahnschrift.ttf", 16),
-    "en-src": face(r"C:\Windows\Fonts\bahnschrift.ttf", 18),
-    "zh-title": face(r"C:\Windows\Fonts\simsun.ttc", 60),
-    "zh-title-s": face(r"C:\Windows\Fonts\simsun.ttc", 48),
-    "zh-end": face(r"C:\Windows\Fonts\simsun.ttc", 64),
-    "zh-end-s": face(r"C:\Windows\Fonts\simsun.ttc", 42),
-    "zh-line": face(r"C:\Windows\Fonts\simsun.ttc", 32),
-    "zh-line-s": face(r"C:\Windows\Fonts\simsun.ttc", 30),
-    "zh-kick": face(r"C:\Windows\Fonts\msyhl.ttc", 26),
-    "zh-kick-s": face(r"C:\Windows\Fonts\msyhl.ttc", 24),
-    "zh-mark": face(r"C:\Windows\Fonts\msyhl.ttc", 20),
-    "zh-src": face(r"C:\Windows\Fonts\msyhl.ttc", 20),
-}
+def resolve_ffmpeg():
+    override = os.environ.get("CREATOR_FFMPEG")
+    if override:
+        path = Path(override)
+        if path.is_file():
+            return path
+        found = shutil.which(override)
+        if found:
+            return Path(found)
+    found = shutil.which("ffmpeg")
+    if found:
+        return Path(found)
+    raise SystemExit(
+        "FFmpeg was not found on PATH. Install it, or set CREATOR_FFMPEG to the executable."
+    )
+
+
+def load_fonts():
+    global FONTS
+    if FONTS:
+        return
+    chosen = {}
+    for family, paths in FAMILIES.items():
+        hit = next((item for item in paths if Path(item).is_file()), None)
+        if hit is None:
+            raise SystemExit(f"Missing font family: {family}")
+        chosen[family] = hit
+    FONTS.update(
+        {
+            key: face(chosen[family], size, index)
+            for key, (family, size, index) in FONT_SPEC.items()
+        }
+    )
 
 
 def ease(p):
@@ -217,6 +268,8 @@ def draw_block(base, lines, alpha, shadow=False):
         from PIL import ImageFilter
 
         shade = shade.filter(ImageFilter.GaussianBlur(10))
+        if alpha < 0.999:
+            shade.putalpha(shade.getchannel("A").point(lambda p, a=alpha: int(p * a)))
         base = Image.alpha_composite(base.convert("RGBA"), shade).convert("RGB")
     if alpha < 0.999:
         over.putalpha(over.getchannel("A").point(lambda p, a=alpha: int(p * a)))
@@ -300,7 +353,7 @@ def compose(base, t, lang, kind):
         put(fade(t, 48.3, 59.2, 0.6, 0.7), end_lines(c, lang, w, h, "long"))
         return frame
     title = FONTS["en-title-s" if en else "zh-title-s"]
-    y = int(h * 0.72)
+    y = int(h * 0.58)
     put(
         fade(t, 0.1, 5.4, 0.25, 0.35),
         [(c["date_title"], title, IVORY, w // 2, y, 1 if en else 0, True)],
@@ -533,6 +586,7 @@ def cover_3x4(coast):
 
 def preview():
     global STILLS_IMG
+    load_fonts()
     STILLS_IMG = load_stills()
     dest = HERE / "previews"
     dest.mkdir(exist_ok=True)
@@ -549,12 +603,12 @@ def preview():
 
 
 def main():
-    global STILLS_IMG
-    if "--preview" in __import__("sys").argv:
+    global FFMPEG, STILLS_IMG
+    load_fonts()
+    if "--preview" in sys.argv:
         preview()
         return
-    if not FFMPEG.is_file():
-        raise SystemExit(f"FFmpeg not found: {FFMPEG}")
+    FFMPEG = resolve_ffmpeg()
     OUT.mkdir(parents=True, exist_ok=True)
     STILLS_IMG = load_stills()
     print("long")
