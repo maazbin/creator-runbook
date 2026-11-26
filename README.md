@@ -2,7 +2,7 @@
 
 **Describe the film. Get the masters back.**
 
-Creator Runbook teaches a coding agent to make a finished video. You write the brief. If you have footage, you give access to it. You do not open an editor. When a shot has no asset, the agent researches it, produces the picture and the type, and cuts the film. Recurring people, places, and palettes get one consistency document before the second shot.
+Creator Runbook is the procedure a smaller model follows to finish at a Fable and Astra level. What that level means is in [the skill](skills/creator-runbook/SKILL.md). You write the brief. If you have footage, you give access to it. You do not open an editor. When a shot has no asset, the agent researches it, produces the picture and the type, and cuts the film. Recurring people, places, and palettes get one consistency document before the second shot.
 
 The finish is a designed frame: real typography, a grade, and a join that means something. Shorts and long-form documentaries. YouTube, Instagram, TikTok, Bilibili, Douyin, Xiaohongshu, and the other players in [the platform list](skills/creator-runbook/references/platforms.md).
 
