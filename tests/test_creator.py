@@ -99,7 +99,7 @@ class CreatorTest(unittest.TestCase):
             )
             return json.loads(result.stdout)
 
-        cfg = {**self.cfg, "id": "test", "seconds": 1}
+        cfg = {**self.cfg, "id": "test", "seconds": 1, "size": [960, 540], "fps": 30}
         run("configure", data=cfg)
         job = run("claim", "test", "one")
         draft = fixture("motion-notes", "episode")
@@ -111,6 +111,11 @@ class CreatorTest(unittest.TestCase):
             draft["scenes"][0].pop(key)
         final = Path(run("finish", job["job"], job["token"], data=draft)["ready"])
         self.assertTrue((final / "video.mp4").stat().st_size > 1000)
+        info = subprocess.run(
+            [ff, "-hide_banner", "-i", str(final / "video.mp4")], capture_output=True, text=True
+        ).stderr
+        self.assertIn("960x540", info)
+        self.assertIn("30 fps", info)
         self.assertIn("00:00:01,000", (final / "captions.srt").read_text(encoding="utf-8"))
         self.assertEqual(run("claim", "test", "one")["path"], str(final))
         self.assertEqual(run("claim", "test", "two")["recent"][0]["angle"], draft["angle"])

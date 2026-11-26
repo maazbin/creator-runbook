@@ -28,3 +28,17 @@ Copy these. Change a number only when the consistency document or [the platform 
 ## Encode, then hand it on
 
 Encode the shot with the container in [platforms](platforms.md). A shot with no sound yet can be silent. [Production](production.md) mixes the master and says what the helper may check. The helper does not draw this shot.
+
+## A runnable contact frame
+
+For a folded object, import `surface` from [fold.py](../scripts/fold.py) into the shot. It projects six vertices, draws faces in depth order, shades each normal against a key and fill, and can project a contact shadow. For a different subject keep the projection and replace the mesh and materials. Examine the hinge, shadow and silhouette in the saved frame before rendering the action.
+
+```python
+from PIL import Image, ImageDraw
+from fold import surface
+
+image = Image.new("RGB", (1080, 1920), "#284e56")
+surface(ImageDraw.Draw(image), (530, 900), 5, pitch=-8, bank=20,
+        shadow=(1100, 200, "#1b3a40"))
+image.save("contact.png")
+```

@@ -16,6 +16,31 @@ SIZES = {"portrait": (720, 1280), "landscape": (1280, 720), "square": (900, 900)
 LAYOUTS = {"statement", "compare", "steps", "media"}
 
 
+def master_settings(cfg):
+    """Resolve a labelled aspect and optional exact delivery raster and frame rate."""
+    aspect = cfg.get("format", "portrait")
+    if aspect not in SIZES:
+        raise ValueError("Unknown delivery format")
+    size = cfg.get("size", list(SIZES[aspect]))
+    if (
+        not isinstance(size, list)
+        or len(size) != 2
+        or any(type(n) is not int or n < 2 or n % 2 for n in size)
+    ):
+        raise ValueError("size must be two positive even pixel dimensions")
+    w, h = size
+    if (
+        (aspect == "portrait" and w >= h)
+        or (aspect == "landscape" and w <= h)
+        or (aspect == "square" and w != h)
+    ):
+        raise ValueError("size must match the declared format")
+    fps = cfg.get("fps", 24)
+    if type(fps) is not int or not 1 <= fps <= 120:
+        raise ValueError("fps must be an integer between 1 and 120")
+    return size, fps
+
+
 def validate(draft, cfg):
     if not isinstance(draft, dict):
         raise ValueError("Episode must be a JSON object")
@@ -90,10 +115,11 @@ def film_plan(draft, cfg):
             if k in s
         }
         scenes.append(selected)
+    size, fps = master_settings(cfg)
     return {
         "title": draft["title"],
-        "fps": 24,
-        "size": list(SIZES[cfg.get("format", "portrait")]),
+        "fps": fps,
+        "size": size,
         "sources": cfg.get("sources", {}),
         "scenes": scenes,
     }
@@ -189,7 +215,7 @@ def fit(draw, text, box, size, color, custom, bold=False):
 def make_cards(stage, cfg, s, idx, ff):
     from PIL import Image, ImageDraw
 
-    w, h = SIZES[cfg.get("format", "portrait")]
+    (w, h), fps = master_settings(cfg)
     accent = cfg.get("accent", "#C3E690")
     custom = cfg.get("font") or ""
     mx = int(w * 0.09)
@@ -238,7 +264,7 @@ def make_cards(stage, cfg, s, idx, ff):
         )
         return im
 
-    total = round(s["seconds"] * 24)
+    total = round(s["seconds"] * fps)
     # Cache static states. The reveal is timed in frames, then holds for reading.
     states = [plate(i).tobytes() for i in range(len(points) + 1)]
     target = stage / f"card-{idx}.mp4"
@@ -254,7 +280,7 @@ def make_cards(stage, cfg, s, idx, ff):
         "-s",
         f"{w}x{h}",
         "-r",
-        "24",
+        str(fps),
         "-i",
         "pipe:0",
         "-an",
