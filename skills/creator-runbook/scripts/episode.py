@@ -108,19 +108,47 @@ def asset(root, name):
     return str(p)
 
 
+SERIF = [
+    r"C:\Windows\Fonts\NotoSerif-Regular.ttf",
+    r"C:\Windows\Fonts\georgia.ttf",
+    "/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf",
+    "NotoSerif-Regular.ttf",
+    "Georgia.ttf",
+    "DejaVuSerif.ttf",
+    "DejaVuSans.ttf",
+    "arial.ttf",
+]
+SERIF_BOLD = [
+    r"C:\Windows\Fonts\NotoSerif-Bold.ttf",
+    r"C:\Windows\Fonts\georgiab.ttf",
+    "/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf",
+    "NotoSerif-Bold.ttf",
+    "georgiab.ttf",
+    "DejaVuSerif-Bold.ttf",
+    "DejaVuSans-Bold.ttf",
+    "arialbd.ttf",
+]
+
+
 @lru_cache(maxsize=256)
 def font(size, bold, custom):
     from PIL import ImageFont
 
     if custom:
         return ImageFont.truetype(custom, size)
-    fonts = ["DejaVuSans-Bold.ttf", "arialbd.ttf"] if bold else ["DejaVuSans.ttf", "arial.ttf"]
-    for item in fonts:
+    for item in SERIF_BOLD if bold else SERIF:
         try:
             return ImageFont.truetype(item, size)
         except OSError:
             pass
     return ImageFont.load_default(size=size)
+
+
+def tracked(draw, text, x, y, face, fill, gap):
+    for ch in text:
+        draw.text((x, y), ch, font=face, fill=fill)
+        x += draw.textlength(ch, font=face) + gap
+    return x
 
 
 def lines_for(draw, text, face, width):
@@ -169,46 +197,43 @@ def make_cards(stage, cfg, s, idx, ff):
     points = s.get("points", []) if s["layout"] in ("compare", "steps") else []
 
     def plate(shown):
-        im = Image.new("RGB", (w, h), "#172022")
+        im = Image.new("RGB", (w, h), "#100E0C")
         d = ImageDraw.Draw(im)
-        fit(
-            d,
-            cfg["name"],
-            (mx, int(h * 0.1), usable, int(h * 0.06)),
-            min(30, w // 22),
-            accent,
-            custom,
-        )
-        d.line((mx, int(h * 0.19), w - mx, int(h * 0.19)), fill="#516362", width=2)
+        kicker_size = max(16, min(28, w // 46))
+        kicker = font(kicker_size, False, custom)
+        tracked(d, cfg["name"].upper(), mx, int(h * 0.14), kicker, accent, max(2, kicker_size // 7))
+        rule_y = int(h * 0.14) + kicker_size + int(h * 0.025)
+        d.line((mx, rule_y, mx + int(w * 0.08), rule_y), fill=accent, width=1)
         fit(
             d,
             s["heading"],
-            (mx, int(h * 0.24), usable, int(h * (0.21 if points else 0.31))),
-            min(76, w // 10),
-            "#F8F4E9",
+            (mx, int(h * 0.28), usable, int(h * (0.22 if points else 0.28))),
+            min(68, w // 14),
+            "#F3EDE2",
             custom,
             True,
         )
         if points:
-            top = int(h * 0.47)
-            step = int(h * 0.085)
-            for i, t in enumerate(points[:shown]):
+            top = int(h * 0.54)
+            step = int(h * 0.09)
+            for i, label in enumerate(points[:shown]):
                 y = top + i * step
-                d.rounded_rectangle((mx, y, mx + 8, y + int(step * 0.67)), radius=4, fill=accent)
+                num = font(max(16, min(28, w // 42)), False, custom)
+                d.text((mx, y), f"{i + 1:02d}", font=num, fill=accent)
                 fit(
                     d,
-                    t,
-                    (mx + 26, y, usable - 28, int(step * 0.8)),
-                    min(33, w // 23),
-                    "#FAF6E9",
+                    label,
+                    (mx + int(w * 0.07), y, usable - int(w * 0.08), int(step * 0.8)),
+                    min(32, w // 28),
+                    "#F3EDE2",
                     custom,
                 )
         fit(
             d,
             s["line"],
-            (mx, int(h * 0.76), usable, int(h * 0.14)),
-            min(35, w // 22),
-            "#D0D9D5",
+            (mx, int(h * 0.78), int(usable * 0.86), int(h * 0.12)),
+            min(28, w // 32),
+            "#C4B49A",
             custom,
         )
         return im

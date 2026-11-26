@@ -21,7 +21,7 @@ A comedy can hold an extra beat before the reveal. An explainer can replace the 
 
 Draw a distinct silhouette, a readable field behind it, and a foreground object that can briefly hide it. Decide where the eye should start and end. Define action in local coordinates so that a fold, hand, or door turns on its real hinge. A cubic path is useful for flight. A mechanical door usually follows a constrained line. Set a different size and velocity for foreground, middle distance, and skyline during a tracking shot.
 
-Use the portable [motion helpers](../scripts/motion.py) with Pillow, or implement the same decisions in the host renderer. This is a complete frame recipe for a banked sheet of paper. Advance seconds at the export frame rate:
+Use the portable [motion helpers](../scripts/motion.py) to test a path, a hinge, or a camera. The four frames below are a staging sketch for a banked sheet of paper. They are not a delivered shot. The picture that ships is a finished frame, typed and graded as in [craft](craft.md). Advance a test at the export frame rate:
 
 ```python
 from PIL import Image, ImageDraw

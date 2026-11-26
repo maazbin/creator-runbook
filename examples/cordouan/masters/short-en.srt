@@ -1,0 +1,19 @@
+1
+00:00:00,000 --> 00:00:00,400
+[Low tone]
+
+2
+00:00:00,100 --> 00:00:05,400
+25 July 1823
+
+3
+00:00:06,300 --> 00:00:11,400
+The curve stays.
+
+4
+00:00:12,200 --> 00:00:16,100
+The thickness goes.
+
+5
+00:00:17,150 --> 00:00:19,700
+Cordouan. A lens, not a thicker one. Reconstruction.

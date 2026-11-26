@@ -1,5 +1,7 @@
 # Picture and sound
 
+Type, grade, and the meaning of a join live in [craft](craft.md). This note is the shot.
+
 Start every shot at an identifiable place. A map needs an overview before a pin; a screen demo needs enough interface to identify the product before enlarging one control. Write the start frame, end frame, focus target, triggering word or action, and the duration of the hold after it lands. “Cinematic zoom” leaves all five decisions to somebody else.
 
 For diagrams, keep one persistent object while the others change. For a fold, keep the crease fixed and track the corner. For a chart, keep the axis, units and scale fixed unless their change is the lesson. Give viewers enough time to locate the mark after the voice names it. On an animated character, move the eyes to the new target before the hand reaches it; let the next cut answer what the character saw. Review the silhouettes for intent and the cut for screen direction.

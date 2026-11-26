@@ -4,3 +4,4 @@ __pycache__/
 .private/
 .scratch/
 .env
+examples/cordouan/previews/

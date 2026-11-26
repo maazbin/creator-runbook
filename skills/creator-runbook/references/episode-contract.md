@@ -6,7 +6,9 @@ Each scene has a unique id, seconds, basis, evidence (list), voice (exact spoken
 
 Use basis documented or observation with a real ID from the profile's sources for factual material. A proposal also needs screen_label and, for a voiced proposal, a spoken_qualification contained in voice. Use fiction for invented narrative and transition for purely connective material. Invented labels, footage and words cannot stand in for evidence. If an essential source is missing, research it or change the claim. For a technical validation failure, repair the named scene while preserving the underlying brief.
 
-A complete tiny fixture is below. It illustrates the data shape. For a motion or performance brief, replace the card with actual picture assets.
+`statement`, `compare`, and `steps` are intertitles. A shot whose job is the subject uses `media` and a finished picture. A generated scene that could be mistaken for a record carries `screen_label`.
+
+A complete tiny fixture is below. It illustrates the data shape. It is not the visual standard.
 
 Channel sent to configure:
 

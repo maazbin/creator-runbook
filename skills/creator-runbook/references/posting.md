@@ -1,6 +1,6 @@
 # Write for the destination
 
-Read the finished cut and the creator’s audience. Prepare copy only for requested outlets. Keep upload instructions separate from the public copy. Verify current platform limits, link placement, labels and music rights at release time. Check any DM offer can actually be fulfilled. Translation is its own writing pass.
+Read the finished cut and the creator’s audience. Prepare copy only for requested outlets. Masters, aspect ratios, and safe areas are in [platforms](platforms.md). Keep upload instructions separate from the public copy. Verify current platform limits, link placement, labels and music rights at release time. Check any DM offer can actually be fulfilled. Translation is its own writing pass. Write the Chinese title and description for Bilibili, Douyin, and Xiaohongshu. Do not translate the English post and stop.
 
 | Outlet | Deliver | Example for the folded booklet |
 | --- | --- | --- |
