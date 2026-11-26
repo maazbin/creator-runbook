@@ -6,6 +6,10 @@ Creator Runbook is the procedure a smaller model follows to finish at a Fable an
 
 The finish is a designed frame: real typography, a grade, and a join that means something. Shorts and long-form documentaries. YouTube, Instagram, TikTok, Bilibili, Douyin, Xiaohongshu, and the other players in [the platform list](skills/creator-runbook/references/platforms.md).
 
+## A seven-word brief
+
+“A paper plane misses the last train.” Watch the door light disappear, then follow the wing onto the last carriage. [Play the 15-second animation](examples/last-train/film.mp4) · [See the four shots and their source](examples/last-train/README.md).
+
 ## A finished pair
 
 [Cordouan, 25 July 1823](examples/cordouan/). One researched film, two edits.
@@ -41,7 +45,7 @@ For your own footage, replace the brief and give the agent the folder. To keep t
 
 ## Under the hood
 
-The agent writes, designs, and directs. Picture and type follow [the craft note](skills/creator-runbook/references/craft.md). A missing shot is rendered headless, as in [the render path](skills/creator-runbook/references/render.md): Blender by default, or Maya or After Effects when that project and its renderer are already on the machine. The cut is a Premiere sequence executed with FFmpeg. A spoken line is a performance from [the voice note](skills/creator-runbook/references/voice.md). The included helper uses Python, Pillow, and FFmpeg to assemble those finished shots, draw an intertitle when a chapter card is actually called for, and mux captions. Your footage and channel history stay in a private working directory.
+The agent writes, designs, and directs. Picture and type follow [the craft note](skills/creator-runbook/references/craft.md). A missing shot is drawn by the agent, as in [the render path](skills/creator-runbook/references/render.md). The cut is executed with FFmpeg. A spoken line is a performance from [the voice note](skills/creator-runbook/references/voice.md). The included helper uses Python, Pillow, and FFmpeg to assemble those finished shots, draw an intertitle when a chapter card is actually called for, and mux captions. Your footage and channel history stay in a private working directory.
 
 The files in `examples/motion-notes` and `examples/last-light` are assembler fixtures. They are not the visual standard.
 

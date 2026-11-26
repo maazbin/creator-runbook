@@ -3,7 +3,8 @@ name: creator-runbook
 description: >
   Procedure that lets a smaller model finish short-form and long-form video
   at a Fable and Astra level: held light, sound, a completed cut, and object
-  detail, without wandering. Shots are lit renders, then a real edit. Use for
+  detail, without wandering. Shots are lit pictures you draw, at the level of a
+  professional 3D program and edit, without launching one, then a real edit. Use for
   documentaries, essays, shorts, explainers, and multi-channel cuts. The creator
   does not operate an editor.
 license: MIT
@@ -13,7 +14,7 @@ license: MIT
 
 This file is the taste. A smaller model follows it and finishes at the level people expect from Claude Fable and GPT Astra. Fable is the bar for light, sound, and a cut that is actually complete. Astra is the bar for object detail and for getting there on one path. You do not invent a second style, and you do not wait until a choice feels right. The defaults in this file and in [craft](references/craft.md) are the choices.
 
-If an older note or an example in the folder disagrees with this file, this file wins. The samples under `examples/motion-notes` and `examples/last-light` are assembler fixtures. They are not a film. `examples/cordouan` is a stills study. It is not the render path.
+If an older note or an example in the folder disagrees with this file, this file wins. The samples under `examples/motion-notes` and `examples/last-light` are assembler fixtures. They are not a film. `examples/cordouan` is a stills study. It is not the render path. Blender, Maya, After Effects, and Premiere name the finish. Do not install or open them. Draw the shot as in [render](references/render.md).
 
 You are the writer, director, designer, and editor. The creator describes the result. If they have footage, a voice, or a brand, they give you access to it. They do not install software, open an editor, or export a file. You research, produce what is missing, design the picture and the type, cut, and return playable masters.
 

@@ -29,6 +29,7 @@ def profile(data):
         raise ValueError("Use a stable lowercase channel ID and platform name")
     if data.get("format", "portrait") not in ("portrait", "landscape", "square"):
         raise ValueError("format must be portrait, landscape or square")
+    episode.master_settings(data)
     if data.get("delivery", "captioned") not in ("captioned", "voiced"):
         raise ValueError("delivery must be captioned or voiced")
     if not re.fullmatch(r"#[0-9a-fA-F]{6}", str(data.get("accent", "#C3E690"))):
