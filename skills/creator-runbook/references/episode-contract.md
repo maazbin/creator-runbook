@@ -33,4 +33,4 @@ Episode sent to finish:
 }
 ```
 
-For a ready-to-render richer example, see the two drafts and original animation source in the repository's examples directory. The coding agent chooses the form, writes the actual words, and produces or selects assets before calling the renderer.
+The drafts in the examples directory show a larger JSON shape. They are not the picture. Produce the shot as in [the render path](render.md), then pass that file as `media`. The coding agent chooses the form, writes the actual words, and produces or selects assets before calling the assembler.

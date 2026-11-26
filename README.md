@@ -14,7 +14,7 @@ The finish is a designed frame: real typography, a grade, and a join that means 
 - Short master, 9:16, for Reels, TikTok, Shorts, and Douyin. The date is on screen in the first second.
 - English and Chinese type, from the same grade and the same consistency document.
 
-The pictures are labeled reconstructions. The date and the mechanism are sourced in that document.
+The pictures are labeled reconstructions. The date and the mechanism are sourced in that document. Those masters are a stills study. A new shot is a lit render, as in [the render path](skills/creator-runbook/references/render.md).
 
 ## Make one
 
@@ -41,8 +41,8 @@ For your own footage, replace the brief and give the agent the folder. To keep t
 
 ## Under the hood
 
-The agent writes, designs, and directs. Picture and type follow [the craft note](skills/creator-runbook/references/craft.md). The included helper uses Python, Pillow, and FFmpeg to assemble finished shots, draw an intertitle when a chapter card is actually called for, and mux captions. Your footage and channel history stay in a private working directory.
+The agent writes, designs, and directs. Picture and type follow [the craft note](skills/creator-runbook/references/craft.md). A missing shot is rendered headless, as in [the render path](skills/creator-runbook/references/render.md): Blender by default, or Maya or After Effects when that project and its renderer are already on the machine. The cut is a Premiere sequence executed with FFmpeg. The included helper uses Python, Pillow, and FFmpeg to assemble those finished shots, draw an intertitle when a chapter card is actually called for, and mux captions. Your footage and channel history stay in a private working directory.
 
 The files in `examples/motion-notes` and `examples/last-light` are assembler fixtures. They are not the visual standard.
 
-[Read the skill](skills/creator-runbook/SKILL.md) · [Craft](skills/creator-runbook/references/craft.md) · [Platforms](skills/creator-runbook/references/platforms.md) · [Production](skills/creator-runbook/references/production.md) · [MIT license](LICENSE)
+[Read the skill](skills/creator-runbook/SKILL.md) · [Craft](skills/creator-runbook/references/craft.md) · [Render](skills/creator-runbook/references/render.md) · [Platforms](skills/creator-runbook/references/platforms.md) · [Production](skills/creator-runbook/references/production.md) · [MIT license](LICENSE)

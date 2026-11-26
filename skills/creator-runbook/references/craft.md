@@ -23,7 +23,7 @@ Keep these headings:
 
 ## Typography
 
-Set every word in a font engine or in HTML and CSS. An image model may paint a scene. It does not paint titles, numbers, captions, or diagrams that have to be correct.
+Set every word in a font engine or in HTML and CSS. An image model does not paint titles, numbers, captions, or diagrams that have to be correct.
 
 - One family for titles and one for information, or one family in two optical sizes. A new face per card is drift.
 - At most four roles: kicker, title, line, source. One of them is loud.
@@ -51,7 +51,7 @@ Author the join in the picture. The assembler may concatenate finished shots. Ha
 
 ## Picture
 
-Show the thing the sentence is about. A diagram is right for a measurement: draw it in code, with the real quantities, and keep the axis still. A story or a documentary needs a place, a light, and a subject with weight. Stage the subject in that light. Do not paste a cut-out onto a backdrop.
+Show the thing the sentence is about. A shot has thickness, a camera, and a light: a rendered scene, a photograph, or supplied footage. A measurement is a solid in that scene, with the real quantity and the axis held still. Stage the subject in the light. Do not paste a cut-out onto a backdrop. How the frame is rendered is in [the render path](render.md).
 
 Hold a shot long enough to read the fact it introduces. Then leave. Coverage is a new angle that answers a new question, not a second version of the same frame.
 
