@@ -6,6 +6,10 @@ Creator Runbook is the procedure a smaller model follows to finish at a Fable an
 
 The finish is a designed frame: real typography, a grade, and a join that means something. Shorts and long-form documentaries. YouTube, Instagram, TikTok, Bilibili, Douyin, Xiaohongshu, and the other players in [the platform list](skills/creator-runbook/references/platforms.md).
 
+## A seven-word brief
+
+“A paper plane misses the last train.” Watch the door light disappear, then follow the wing onto the last carriage. [Play the 15-second animation](examples/last-train/film.mp4) · [See the four shots and their source](examples/last-train/README.md).
+
 ## A finished pair
 
 [Cordouan, 25 July 1823](examples/cordouan/). One researched film, two edits.
