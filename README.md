@@ -30,6 +30,14 @@ Give me the playable masters, captions, and the YouTube and Bilibili posts.
 
 For your own footage, replace the brief and give the agent the folder. To keep the skill across projects, ask the agent to install `skills/creator-runbook`. It follows the [Agent Skills specification](https://agentskills.io/specification).
 
+## Coming from Filmcraft
+
+Creator Runbook includes Filmcraft’s writing exercises, documentary paper edits and offline booklet animation. Install `skills/creator-runbook` for the full workflow. For a chat-only model, paste [the standalone brief](START-HERE.txt).
+
+- [Watch the 21-second booklet animation](examples/booklet-study.mp4) or [rebuild it from its original edit plan](skills/creator-runbook/references/filmcraft-plans.md).
+- [Read the five-minute archival script](skills/creator-runbook/examples/documentary/the-corner.md) and [see how evidence becomes a timed documentary edit](skills/creator-runbook/references/documentary-example.md).
+- [Read the original model trials](examples/filmcraft-trials.md) for two cases where a draft implied more than its sources supported.
+
 ## What you can hand it
 
 | You say | What the agent does |
