@@ -186,8 +186,16 @@ def render_scene(ff, root, film, scene, segment):
     if scene.get("screen_label"):
         label = required_text(scene, "screen_label", scene["id"])
         (segment.parent / "label.txt").write_text(label, encoding="utf-8")
+        font_option = ""
+        if os.name == "nt":
+            system_font = Path(os.environ.get("WINDIR", "C:/Windows")) / "Fonts" / "segoeui.ttf"
+            if system_font.is_file():
+                local_font = segment.parent / "label-font.ttf"
+                if not local_font.exists():
+                    shutil.copyfile(system_font, local_font)
+                font_option = "fontfile=label-font.ttf:"
         filters += (
-            f";{video}drawtext=textfile=label.txt:expansion=none:fontsize={max(14,h//28)}:"
+            f";{video}drawtext={font_option}textfile=label.txt:expansion=none:fontsize={max(14,h//28)}:"
             "fontcolor=white:box=1:boxcolor=black@0.8:boxborderw=8:x=w*0.05:y=h*0.055[labelled]"
         )
         video = "[labelled]"
